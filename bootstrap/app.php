@@ -3,6 +3,7 @@
 
 define('ROOT', dirname(__DIR__));
 const VIEW_PATH = ROOT.'/views';
+const DB_CONFIG_FILE = ROOT.'/config/db.php';
 
 function url()
 {

@@ -15,9 +15,9 @@
             <div>
 
             <?php foreach ($messages as $row):?>
-                <h3><?=$row['name']?>&nbsp;<?=$row['surname']?></h3>
-                <p>><?=$row['created_at']?></p>
-                <p>><?=$row['message']?></p>
+                <h3><?=$row->name?>&nbsp;<?=$row->surname?></h3>
+                <p>><?=$row->created_at?></p>
+                <p>><?=$row->message?></p>
             <?php endforeach?>
             </div>
 
