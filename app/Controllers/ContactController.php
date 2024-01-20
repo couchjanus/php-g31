@@ -1,18 +1,26 @@
 <?php
+declare(strict_types=1);
 
-require_once dirname(__DIR__)."/Core/Views/View.php";
-require_once dirname(__DIR__)."/Core/Http/Response.php";
-require_once dirname(__DIR__)."/Core/Models/DB.php";
+namespace Controllers;
+
+use Core\Models\DB;
+use Core\Views\View;
+use Core\Http\{Response, Request};
+
+// require_once dirname(__DIR__)."/Core/Views/View.php";
+// require_once dirname(__DIR__)."/Core/Http/Response.php";
+// require_once dirname(__DIR__)."/Core/Models/DB.php";
 
 class ContactController
 {
     private View $view;
     protected $connect;
 
-    public function __construct()
+    public function __construct(private Request $request)
     {
         $this->view = new View(VIEW_PATH);
         $this->connect = DB::connect();
+        $this->request = $request;
         
     }
 

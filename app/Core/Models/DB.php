@@ -1,4 +1,8 @@
 <?php
+declare(strict_types=1);
+namespace Core\Models;
+
+// use PDO;
 
 class DB 
 {
@@ -11,7 +15,7 @@ class DB
 
         if(!self::$instance) {
             $dsn = self::makeDsn(self::$config['db']);
-            self::$instance = new PDO($dsn, self::$config['user'], self::$config['password'], self::$config['options']);
+            self::$instance = new \PDO($dsn, self::$config['user'], self::$config['password'], self::$config['options']);
         }
         return self::$instance;
 

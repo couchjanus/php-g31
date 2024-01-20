@@ -1,17 +1,12 @@
 <?php
-
 declare(strict_types=1);
 
-namespace Controllers;
-
-// use Core\Models\DB;
-use Core\Views\View;
+namespace Controllers\Admin;
+ 
 use Core\Http\{Response, Request};
+use Core\Views\View;
 
-// require_once dirname(__DIR__)."/Core/Views/View.php";
-// require_once dirname(__DIR__)."/Core/Http/Response.php";
-
-class AboutController
+class DashboardController
 {
     private View $view;
 
@@ -24,9 +19,8 @@ class AboutController
 
     public function index()
     {
-        $content = $this->view->render('about/index');
+        $content = $this->view->render('admin/index');
         return (new Response($content))->send();
     }
-
+    
 }
-// render('about/index');

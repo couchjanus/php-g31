@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
+namespace Core\Views;
 
 class View
 {
     private string $path;
-    private array $parameters;
 
     public function __construct(string $path, array $parameters=[])
     {
