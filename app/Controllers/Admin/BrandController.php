@@ -3,35 +3,42 @@ declare(strict_types=1);
 
 namespace Controllers\Admin;
  
-use Core\Http\{Response, Request};
-use Core\Views\View;
+use Core\Http\{Request, BaseController};
+use Models\Brand;
 
-class BrandController
+class BrandController extends BaseController
 {
-    private View $view;
+   protected static string $layout = "admin";
+   private Brand $brand;
 
     public function __construct(private Request $request)
     {
-        $this->view = new View(VIEW_PATH);
         $this->request = $request;
-        
+        parent::__construct($this->request);
+        $this->brand = new Brand();
     }
 
     public function index()
     {
-        $content = $this->view->render('admin/brands/index');
-        return (new Response($content))->send();
+
+        $brands = $this->brand->all();
+        return $this->render('admin/brands/index', ['brands' => $brands]);
+
     }
     
     public function create()
     {
-        $content = $this->view->render('admin/brands/create');
-        return (new Response($content))->send();
+        return $this->render('admin/brands/create');
     }
 
     public function store()
     {
-       
+        $this->brand->name = $this->request->name;
+        $this->brand->description = $this->request->description;
+
+        // var_dump($this->brand->name, $this->brand->description);
+        // exit();
+        $this->brand->save();
     }
 
     public function show($params)
@@ -42,23 +49,36 @@ class BrandController
 
     public function edit($params)
     {
-        var_dump($params);
+
         extract($params);
-        var_dump($id);
-        exit();
-        $content = $this->view->render('admin/brands/edit');
-        return (new Response($content))->send();
+        $brand = $this->brand->first($id);
+        return $this->render('admin/brands/edit', ['brand' => $brand ]);
+       
+    }
+
+    public function update1($params)
+    {
+        extract($params);
+        $this->brand->id = $id;
+        $this->brand->name = $this->request->name;
+        $this->brand->description = $this->request->description;
+        $this->brand->save();  
     }
 
     public function update()
     {
-       
+        
+        $this->brand->id = $this->request->id;
+        $this->brand->name = $this->request->name;
+        $this->brand->description = $this->request->description;
+        $this->brand->save();  
     }
+
 
     public function destroy($params)
     {
         extract($params);
-       
+        $this->brand->delete($id);
     }
 
 }

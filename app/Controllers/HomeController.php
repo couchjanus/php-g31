@@ -3,31 +3,19 @@ declare(strict_types=1);
 
 namespace Controllers;
 
-use Core\Http\{Response, Request};
-use Core\Views\View;
+use Core\Http\{Request, BaseController};
 
-// require_once dirname(__DIR__)."/Core/Views/View.php";
-// require_once dirname(__DIR__)."/Core/Http/Response.php";
-
-class HomeController
+class HomeController extends BaseController
 {
-    private View $view;
-
-    public function __construct(private Request $request)
-    {
-        // echo "hello OOP";
-        // render('home/index');
-        $this->view = new View(VIEW_PATH);
-        $this->request = $request;
-        
-    }
+    protected static string $layout = "app";
+    // public function __construct(private Request $request)
+    // {
+    //     $this->request = $request;    
+    // }
 
     public function index()
     {
-        $content = $this->view->render('home/index');
-        // echo $this->view->render('home/index');
-        return (new Response($content))->send();
+        return $this->render('home/index');
     }
 
 }
-// render('home/index');
