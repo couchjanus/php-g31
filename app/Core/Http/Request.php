@@ -10,7 +10,7 @@ class Request
 
     public function __construct()
     {
-        $this->request = $_REQUEST;
+        $this->request = $this->prepare($_REQUEST, $_FILES);
     }
 
     public function __get($name)
@@ -18,6 +18,24 @@ class Request
         if(isset($this->request[$name])) {
             return $this->request[$name];
         }
+    }
+
+    private function prepare(array $request, array $files)
+    {
+        $request = $this->clean($request);
+        return array_merge($files, $request);
+    }
+
+    private function clean($data)
+    {
+        if (is_array($data)) {
+            $cleaned = [];
+            foreach($data as $key => $value) {
+                $cleaned[$key] = $this->clean($value);
+            }
+            return $cleaned;
+        }
+        return trim(htmlspecialchars($data, ENT_QUOTES));
     }
 
     public function uri()

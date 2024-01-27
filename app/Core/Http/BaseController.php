@@ -23,4 +23,9 @@ class BaseController
         return (new Response($rendered_content))->send();
     }
 
+    public function redirect($location="")
+    {
+        return Response::redirect($location);
+    }
+
 }
