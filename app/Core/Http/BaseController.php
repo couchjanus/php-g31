@@ -27,5 +27,8 @@ class BaseController
     {
         return Response::redirect($location);
     }
-
+    public function back()
+    {
+        return Response::back();
+    }
 }

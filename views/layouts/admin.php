@@ -217,6 +217,8 @@
         </div>
       </div>
 
+      <?php require_once ROOT.'/views/layouts/_flash.php';?>
+
       {{ content }}
       
     </main>

@@ -31,4 +31,13 @@ return [
     'admin/categories/edit/{id}' => 'Controllers\Admin\CategoryController@edit',
     'admin/categories/update' => 'Controllers\Admin\CategoryController@update',
     'admin/categories/destroy/{id}' => 'Controllers\Admin\CategoryController@destroy',
+
+    'admin/badges' => 'Controllers\Admin\BadgeController@index',
+    'admin/badges/create' => 'Controllers\Admin\BadgeController@create',
+    'admin/badges/store' => 'Controllers\Admin\BadgeController@store',
+    'admin/badges/{id}' => 'Controllers\Admin\BadgeController@show',
+    'admin/badges/edit/{id}' => 'Controllers\Admin\BadgeController@edit',
+    'admin/badges/update' => 'Controllers\Admin\BadgeController@update',
+    'admin/badges/destroy/{id}' => 'Controllers\Admin\BadgeController@destroy',
+
 ];

@@ -7,6 +7,11 @@ class App
 {
     private Request $request;
 
+    public function __construct()
+    {
+        Session::instance();
+    }
+
     public function run()
     {
         $this->request = new Request();
