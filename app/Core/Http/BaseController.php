@@ -11,9 +11,8 @@ class BaseController
 
     protected static string $layout;
 
-    public function __construct(private Request $request)
+    public function __construct()
     {
-        $this->request = $request;
         $this->view = new View(VIEW_PATH, static::$layout);
     }
 

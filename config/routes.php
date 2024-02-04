@@ -40,4 +40,39 @@ return [
     'admin/badges/update' => 'Controllers\Admin\BadgeController@update',
     'admin/badges/destroy/{id}' => 'Controllers\Admin\BadgeController@destroy',
 
+    'admin/products' => 'Controllers\Admin\ProductController@index',
+    'admin/products/create' => 'Controllers\Admin\ProductController@create',
+    'admin/products/store' => 'Controllers\Admin\ProductController@store',
+    'admin/products/edit/{id}' => 'Controllers\Admin\ProductController@edit',
+    'admin/products/update' => 'Controllers\Admin\ProductController@update',
+    'admin/products/destroy/{id}' => 'Controllers\Admin\ProductController@destroy',
+
+    'products' => 'Controllers\HomeController@getProducts',
+
+    'admin/roles' => 'Controllers\Admin\RoleController@index',
+    'admin/roles/create' => 'Controllers\Admin\RoleController@create',
+    'admin/roles/store' => 'Controllers\Admin\RoleController@store',
+    'admin/roles/edit/{id}' => 'Controllers\Admin\RoleController@edit',
+    'admin/roles/update' => 'Controllers\Admin\RoleController@update',
+    'admin/roles/destroy/{id}' => 'Controllers\Admin\RoleController@destroy',
+
+    'admin/users' => 'Controllers\Admin\UserController@index',
+    'admin/users/create' => 'Controllers\Admin\UserController@create',
+    'admin/users/store' => 'Controllers\Admin\UserController@store',
+    'admin/users/edit/{id}' => 'Controllers\Admin\UserController@edit',
+    'admin/users/update' => 'Controllers\Admin\UserController@update',
+    'admin/users/destroy/{id}' => 'Controllers\Admin\UserController@destroy',
+
+    "register" => "Controllers\RegisterController@index",
+    "signup" => "Controllers\RegisterController@signup",
+    "login" => "Controllers\LoginController@index",
+    "signin" => "Controllers\LoginController@signin",
+    "logout" => "Controllers\LoginController@logout",
+    "profile" => "Controllers\ProfileController@index",
+
+    "cart" => "Controllers\CartController@index",
+
+    "api/auth" => "Controllers\CartController@auth",
+    "api/checkout" => "Controllers\CartController@checkout",
+
 ];

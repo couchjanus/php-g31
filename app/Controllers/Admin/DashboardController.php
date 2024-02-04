@@ -3,12 +3,13 @@ declare(strict_types=1);
 
 namespace Controllers\Admin;
  
-use Core\Http\{Request, BaseController};
+// use Core\Http\{Request, BaseController};
 
 
-class DashboardController extends BaseController
+
+class DashboardController extends AdminController
 {
-    protected static string $layout = "admin";
+    // protected static string $layout = "admin";
     // public function __construct(private Request $request)
     // {
     //     $this->request = $request;

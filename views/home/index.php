@@ -14,9 +14,21 @@
           <p class="text-muted text-uppercase mb-1">Carefully created collections</p>
           <h2 class="h5 text-uppercase mb-4">Browse our categories</h2>
         </header>
-        <carousel-component url="https://my-json-server.typicode.com/couchjanus/db/" site_url="https://couchjanus.github.io"></carousel-component>
+        <!-- <carousel-component url="https://my-json-server.typicode.com/couchjanus/db/" site_url="https://couchjanus.github.io"></carousel-component> -->
 
       </div>
+    </section>
+
+    <!-- catalog -->
+
+    <section class="catalog" id="catalog">
+      <div class="container">
+        <header class="header">
+          <h2>Our <span>products</span></h2>
+        </header>
+        <div class="product-container"></div>
+      </div>
+
     </section>
 
     <services-component></services-component>

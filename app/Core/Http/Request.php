@@ -43,6 +43,23 @@ class Request
         return trim(htmlspecialchars($data, ENT_QUOTES));
     }
 
+    public function getMethod(): string    {
+        return strtoupper($_SERVER['REQUEST_METHOD']);
+    }
+    public function isMethodPost(): bool    {
+        // Only allow POST requests
+        return $this->getMethod() === 'POST';
+    }
+ 
+    public function getContentType(): string    {
+        return isset($_SERVER['CONTENT_TYPE']) ? $_SERVER['CONTENT_TYPE'] : '';
+    }
+    public function isJson(): bool    {
+        // Make sure Content-Type is application/json
+        return stripos($this->getContentType(), 'application/json') !== false;
+    }
+ 
+
     public function uri()
     {
         return trim($_SERVER['REQUEST_URI'], '/');

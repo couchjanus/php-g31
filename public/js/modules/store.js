@@ -33,7 +33,7 @@ export class Store {
     }
   
     static clear() {
-          return localStorage.clear();
+        return localStorage.clear();
     }
   
     static isset(key) {

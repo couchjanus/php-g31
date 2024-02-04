@@ -225,21 +225,21 @@ dialog::backdrop {
     <div class="login-text">
       <h2>Welcome Back</h2>
       <p>Create your account.<br>It's totally free.</p>
-      <a class="btn" href="">Sign Up</a>
+      <a class="btn" href="/register">Sign Up</a>
     </div>
   </div>
 
   <div class="col-right">
     <div class="login-form">
       <h2>Login</h2>
-      <form>
+      <form method="POST" action="/signin">
         <p>
           <label>Username or email address<span>*</span></label>
-          <input type="text" placeholder="Username or Email" required>
+          <input type="email" name="email" placeholder="Username or Email" required>
         </p>
         <p>
           <label>Password<span>*</span></label>
-          <input type="password" placeholder="Password" required>
+          <input type="password" placeholder="Password" name="password" required>
         </p>
         <p>
           <input type="submit" value="Sing In" />

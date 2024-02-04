@@ -1,5 +1,5 @@
 <div class="mt-3 d-flex justify-content-between">
-  <h2>Brands list</h2>
+  <h2>Sections list</h2>
   <a href="/admin/sections/create" class="btn btn-primary">Add new</a>
 </div>
 

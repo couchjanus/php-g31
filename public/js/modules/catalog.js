@@ -1,12 +1,14 @@
+import { saveCart } from '/js/modules/helpers.js';
+
 const productItemTemplate = (product) => `
 <div class="product" data-id="${product.id}">
-    <div class="icons">
+    <div class="icons"  data-id="${product.id}">
         <a href="#" class="fas fa-shopping-cart add-to-cart"></a>
         <a href="#" class="fas fa-heart add-to-wishlist"></a>
         <a href="#productView" class="fas fa-eye detail"></a>
     </div>
     <div class="image">
-        <div class="badge text-white bg-${product.badge.bg}">${product.badge.title}</div>
+        <div class="badge text-white bg-${product.type}">${product.title}</div>
         <img src="${product.image}">
     </div>
 

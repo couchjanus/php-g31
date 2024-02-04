@@ -1,6 +1,6 @@
 <?php
 namespace Core;
-use Core\Rules\{Required, Min, CustomConstraint};
+use Core\Rules\{Required, Min, CustomConstraint, Email, Password};
 
 class Rule
 {
@@ -27,6 +27,19 @@ class Rule
     public function min($value)
     {
         $this->constraints[] = new Min($value);
+        return $this;
+    }
+
+    public function email()
+    {
+        $this->constraints[] = new Email();
+        return $this;
+
+    }
+
+    public function passwoed($value)
+    {
+        $this->constraints[] = new Password($value);
         return $this;
     }
 

@@ -3,7 +3,7 @@
 import { Store } from '/js/modules/store.js';
 import {populateProductList, addProductToCartButton} from '/js/modules/catalog.js';
 import { populateShoppingCart, renderCart } from '/js/modules/cart.js';
-import { cartItemsAmount, fetchData} from '/js/modules/helpers.js';
+import { cartItemsAmount, fetchData, isAuth} from '/js/modules/helpers.js';
 import { detailButton} from '/js/modules/modal.js';
 
 import { populateCategories, renderCategory, renderSelect, renderShowOnly } from '/js/modules/categories.js';
@@ -37,14 +37,16 @@ function main() {
 	wishlist = Store.init('wishlist');
 	cartItemsAmount(cart);
 
-	const url = 'https://my-json-server.typicode.com/couchjanus/db';
+	// const url = 'https://my-json-server.typicode.com/couchjanus/db';
+	const url = "http://cms.my";
 
 	const productContainer = document.querySelector('.product-container');
 	fetchData(`${url}/products`)
     .then(products => {
+		// console.log("products", products);
 		if (productContainer) {
 			productContainer.innerHTML = populateProductList(products);	
-			addProductToCartButton();
+			addProductToCartButton(cart);
 			// addProductToWishListButton();
 			detailButton(cart, products);
 
@@ -85,11 +87,52 @@ function main() {
 		const cartPage = document.getElementById('cart-page');
 		if(cartPage) {
 			const shoppingCartItems = cartPage.querySelector('.shopping-cart-items');
+			// console.log(products);
 			shoppingCartItems.innerHTML = populateShoppingCart(cart, products);
 			renderCart(shoppingCartItems, cart);
+			isAuth(url).then(auth => {
+				console.log(auth);
+			  if(auth) {
+			
+				document.getElementById('checkout').addEventListener("click", () => {
+					let inCart = [];
+					Store.get("basket").forEach(item =>{
+						inCart.push({
+							id:parseInt(item.id),
+							amount: parseInt(item.amount)
+						});
+					});
+
+					console.log(inCart);
+					console.log(JSON.stringify({
+						cart: inCart
+					}));
+					fetch("api/checkout", {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify({
+							cart: inCart
+						})
+					})
+					.then(
+						response => {
+							console.log(response);
+							Store.clear();
+							document.location.replace("/profile");
+						}
+					)
+					.catch(error => console.log(error));
+
+
+				}) //checkout
+						
+			  }
+		    })
 		}
 
-	});
+	}); //fetchData
  }
 
  if (document.readyState === "loading") {
